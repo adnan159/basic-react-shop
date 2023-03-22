@@ -1,7 +1,27 @@
 import React from 'react';
 
-export default function Products() {
+const Product = ({ id, title, brand, price, img_url }) => {
+  return(
+    <div className="demo-product">
+      <img src={img_url} alt={title}/>
+      <div className="demo-product-title">
+        <span>{title}</span>
+        <span>Square</span>
+      </div>
+      <div className="demo-product-action">
+        <span>${price}</span>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  );
+}
+
+export default function Products( {products} ) {  
   return (
-    <div className='demo-product-list'>Products</div>
+    <div className='demo-product-list'>
+      {products.map(product=>(
+        <Product {...product} key={product.id}/>
+      ))}
+    </div>
   )
 }
