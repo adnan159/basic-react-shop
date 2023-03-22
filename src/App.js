@@ -1,11 +1,14 @@
 import './App.css';
+import NavBar from './NavBar/NavBar';
+import Products from './ProductList/Products';
+import Cart from './Cart/Cart';
 
 function App() {
   return (
     <div className="App">
-      <div className='demo-nav-bar'>My Shop</div>
-      <div className='demo-product-list'>Products</div>
-      <div className='demo-product-cart'>Cart</div>
+      <NavBar />
+      <Products />
+      <Cart/>
     </div>
   );
 }
