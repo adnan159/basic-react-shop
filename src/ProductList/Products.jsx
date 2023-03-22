@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Product = ({ id, title, brand, price, img_url }) => {
+const Product = ({ id, title, brand, price, img_url, addCartItem }) => {
   return(
     <div className="demo-product">
       <img src={img_url} alt={title}/>
@@ -10,17 +10,17 @@ const Product = ({ id, title, brand, price, img_url }) => {
       </div>
       <div className="demo-product-action">
         <span>${price}</span>
-        <button>Add to Cart</button>
+        <button onClick={()=>addCartItem(id)}>Add to Cart</button>
       </div>
     </div>
   );
 }
 
-export default function Products( {products} ) {  
+export default function Products( {products, addCartItem} ) {  
   return (
     <div className='demo-product-list'>
       {products.map(product=>(
-        <Product {...product} key={product.id}/>
+        <Product {...product} key={product.id} addCartItem={addCartItem}/>
       ))}
     </div>
   )

@@ -7,8 +7,9 @@ import data from './data';
 import './App.css';
 
 function App() {
-  const [products, setProducts] = useState([...data])
-  const [keyword, setKeyword] = useState("")
+  const [products, setProducts] = useState([...data]);
+  const [keyword, setKeyword] = useState('');
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(()=>{
     const filterProduct = data.filter(product=>{
@@ -20,11 +21,19 @@ function App() {
     setProducts(filterProduct );
   },[keyword]);
 
+  const addCartItem = (id) => {
+    const item = products.find(product=>product.id === id);
+    setCartItems((items)=>[
+      ...items,
+      item
+    ]);
+  }
+
   return (
     <div className="App">
       <NavBar setKeyword = {setKeyword}/>
-      <Products products={products}/>
-      <Cart/>
+      <Products products={products} addCartItem={addCartItem}/>
+      <Cart cartItems={cartItems}/>
     </div>
   );
 }
