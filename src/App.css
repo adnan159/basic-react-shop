@@ -25,9 +25,14 @@
 
 .demo-product{
   margin: 10px;
-  background: gainsboro;
+  width: 250px;
+  background: wheat;
   padding: 5px;
   border: 1px solid rgb(204, 194, 194);
+}
+
+.demo-product img {
+  width: 100%;
 }
 
 .demo-product-cart{
@@ -42,4 +47,26 @@
 .demo-product-title, .demo-product-action {
   display: flex;
   justify-content: space-between;
+  padding: 10px 0px 10px 0px;
+  align-items: center;
+}
+
+.demo-product-action{
+  border-top: 2px solid gray;
+}
+
+.demo-product-action button {
+  background-color: rgb(51, 112, 64);
+  color: aliceblue;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.demo-shop-search {
+  height: 30px;
+  width: 300px;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding-left: 10px;
 }
