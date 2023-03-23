@@ -8,7 +8,7 @@ const CartItems = ( {id, title, price, quantity, removeCartItem} ) => {
       <button onClick={() => removeCartItem(id)}>x</button>
       <div className="info">
         <span>{title} x {quantity}</span>
-        <span>${price}</span>
+        <span>${price * quantity}</span>
       </div>
     </div>
   )
@@ -16,7 +16,7 @@ const CartItems = ( {id, title, price, quantity, removeCartItem} ) => {
 
 
 export default function Cart({cartItems, removeCartItem}) {
-  const totalPrice = cartItems.reduce((sum, current) => sum+current.price, 0);
+  const totalPrice = cartItems.reduce((sum, current) => sum + (current.price * current.quantity), 0);
   return (
     <div className='demo-product-cart'>
       <h4>Cart Items</h4>
