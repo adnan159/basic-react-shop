@@ -16,8 +16,9 @@ function App() {
       let tempTitle = product.title.toLowerCase();
       if(tempTitle.includes(keyword.toLowerCase())){
         return product;
+      } else {
+        return '';
       }
-      return product;
     });
     setProducts(filterProduct );
   },[keyword]);
@@ -26,8 +27,7 @@ function App() {
     const item = products.find(product=>product.id === id);
     setCartItems((items)=>[
       ...items,
-      item
-       
+      item       
     ]);
   }
 
