@@ -104,7 +104,7 @@
   align-items: center;
 }
 
-.cart-item button {
+.cart-item .clear-cart, .cart-item .product-checkout {
   padding: 7px;
   height: 35px;
   width: 90px;
