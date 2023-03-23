@@ -2,12 +2,12 @@ import React from 'react';
 
 
 
-const CartItems = ( {title, price} ) => {
+const CartItems = ( {title, price, quantity} ) => {
   return (
     <div className="cart-item">
       <button>x</button>
       <div className="info">
-        <span>{title}</span>
+        <span>{title} x {quantity}</span>
         <span>${price}</span>
       </div>
     </div>
