@@ -1,6 +1,4 @@
-import React from 'react';
-
-
+import React, { useState } from 'react';
 
 const CartItems = ( {id, title, price, quantity, removeCartItem} ) => {
   return (
@@ -16,6 +14,13 @@ const CartItems = ( {id, title, price, quantity, removeCartItem} ) => {
 
 
 export default function Cart({cartItems, removeCartItem, clearCart}) {
+
+  const [checkOutOpen, setCheckOutOpen] = useState(true);
+
+  const toggoleCheckout = () => {
+    setCheckOutOpen( status => !status );
+  }
+
   const totalPrice = cartItems.reduce((sum, current) => sum + (current.price * current.quantity), 0);
   return (
     <div className='demo-product-cart'>
@@ -32,22 +37,32 @@ export default function Cart({cartItems, removeCartItem, clearCart}) {
 
           {cartItems.map(item=> <CartItems {...item} key={item.id} removeCartItem={removeCartItem}/>)}
           
-          {cartItems.length !== 0 &&
-          <>
-            <div className="cart-item">
-              <div className="info">
-                <span>Total</span>
-                <span>${totalPrice}</span>
+          {cartItems.length !== 0 && (
+            <>
+              <div className="cart-item">
+                <div className="info">
+                  <span>Total</span>
+                  <span>${totalPrice}</span>
+                </div>
               </div>
-            </div>
 
+              <div className="cart-item">
+                <div className="info">
+                  <button onClick={clearCart} className='clear-cart'>Cancle</button>
+                  <button className='product-checkout' onClick={toggoleCheckout}>Checkout</button>
+                </div>
+              </div>
+            </>
+          )}
+
+          {checkOutOpen && 
             <div className="cart-item">
               <div className="info">
-                <button onClick={clearCart} className='clear-cart'>Cancle</button>
+                <input type='text' placeholder='Addresss'/>
                 <button className='product-checkout'>Checkout</button>
               </div>
             </div>
-          </>}
+          }
 
       </div>
     </div>
