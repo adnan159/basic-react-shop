@@ -122,3 +122,8 @@
 .cart-item .product-checkout{
   background-color: green;
 }
+
+.demo-product-action button:hover,
+.demo-product-cart button:hover{
+  cursor: pointer;
+}
