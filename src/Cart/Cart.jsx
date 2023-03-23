@@ -15,13 +15,19 @@ const CartItems = ( {id, title, price, quantity, removeCartItem} ) => {
 
 export default function Cart({cartItems, removeCartItem, clearCart}) {
 
-  const [checkOutOpen, setCheckOutOpen] = useState(true);
+  const [checkOutOpen, setCheckOutOpen] = useState(false);
+  const [address, setAddress] = useState('');
 
   const toggoleCheckout = () => {
     setCheckOutOpen( status => !status );
   }
 
+  const handleChange = (e) => {
+    setAddress(e.target.value);
+  }
+
   const totalPrice = cartItems.reduce((sum, current) => sum + (current.price * current.quantity), 0);
+
   return (
     <div className='demo-product-cart'>
       <h4>Cart Items</h4>
@@ -49,21 +55,22 @@ export default function Cart({cartItems, removeCartItem, clearCart}) {
               <div className="cart-item">
                 <div className="info">
                   <button onClick={clearCart} className='clear-cart'>Cancle</button>
-                  <button className='product-checkout' onClick={toggoleCheckout}>Checkout</button>
+                  <button className='product-checkout' onClick={toggoleCheckout}>
+                    {checkOutOpen ? 'Hide' : 'CheckOut' }
+                  </button>
                 </div>
               </div>
+
+              {checkOutOpen && 
+                <div className="cart-item">
+                  <div className="info">
+                    <textarea placeholder='Addresss' onChange={handleChange} />
+                      <button className='product-checkout' style={{background: address ? 'green':'gray'}}>Checkout</button>
+                  </div>
+                </div>
+              }
             </>
           )}
-
-          {checkOutOpen && 
-            <div className="cart-item">
-              <div className="info">
-                <input type='text' placeholder='Addresss'/>
-                <button className='product-checkout'>Checkout</button>
-              </div>
-            </div>
-          }
-
       </div>
     </div>
   )

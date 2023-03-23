@@ -50,7 +50,7 @@ function App() {
 
   const clearCart = () => {
     const response = window.confirm('Are you sure to clear the cart!');
-    if( response == true ){
+    if( response === true ){
       setCartItems([]);
     }
   }
