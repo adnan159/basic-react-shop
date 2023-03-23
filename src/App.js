@@ -17,6 +17,7 @@ function App() {
       if(tempTitle.includes(keyword.toLowerCase())){
         return product;
       }
+      return product;
     });
     setProducts(filterProduct );
   },[keyword]);
@@ -26,6 +27,7 @@ function App() {
     setCartItems((items)=>[
       ...items,
       item
+       
     ]);
   }
 

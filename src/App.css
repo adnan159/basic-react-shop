@@ -35,6 +35,8 @@
 
 .demo-product img {
   width: 100%;
+  height: 270px;
+  object-fit: cover;
 }
 
 .demo-product-cart{
@@ -92,6 +94,9 @@
 .cart-item .info {
   display: flex;
   flex: auto;
-  justify-content: space-between;
+  justify-content: space-between; 
+}
+
+.info span {
   padding: 5px;
 }
