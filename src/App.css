@@ -151,7 +151,8 @@
 
 .demo-product-cart-dark,
 .demo-product-list-dark,
-.app-dark{
+.app-dark,
+.demo-product-dark{
   background-color: #22272f;
   color: white;
 }

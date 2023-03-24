@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import ThemeContext from "../ThemeContext";
 
 const Product = ({ id, title, brand, price, img_url, addCartItem }) => {
+  const { dark } = useContext(ThemeContext);
   return (
-    <div className="demo-product">
+    <div className={`demo-product ${dark ? 'demo-product-dark' : 'demo-product'}`}>
       <img src={img_url} alt={title} />
       <div className="demo-product-title">
         <span>{title}</span>
