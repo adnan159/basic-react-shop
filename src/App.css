@@ -124,6 +124,34 @@
 }
 
 .demo-product-action button:hover,
-.demo-product-cart button:hover{
+.demo-product-cart button:hover {
   cursor: pointer;
+}
+
+.dark-light-button:hover {
+  cursor: pointer;
+}
+
+.dark-light-button {
+  padding: 7px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.shop-dark-light {
+    padding: 7px;
+    color: black;
+    background: wheat;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.demo-product-cart-dark,
+.demo-product-list-dark,
+.app-dark{
+  background-color: #22272f;
+  color: white;
 }

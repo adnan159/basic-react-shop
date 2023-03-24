@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import ThemeContext from "../ThemeContext";
 
 const CartItems = ({ id, title, price, quantity, removeCartItem }) => {
   return (
@@ -17,6 +18,7 @@ const CartItems = ({ id, title, price, quantity, removeCartItem }) => {
 export default function Cart({ cartItems, removeCartItem, clearCart }) {
   const [checkOutOpen, setCheckOutOpen] = useState(false);
   const [address, setAddress] = useState("");
+  const { dark } = useContext(ThemeContext);
 
   const toggoleCheckout = () => {
     setCheckOutOpen((status) => !status);
@@ -32,7 +34,7 @@ export default function Cart({ cartItems, removeCartItem, clearCart }) {
   );
 
   return (
-    <div className="demo-product-cart">
+    <div className={`demo-product-cart ${dark ? 'demo-product-cart-dark' : 'demo-product-cart-light'}`}>
       <h4>Cart Items</h4>
       <div className="cart-items">
         {cartItems.length === 0 && (
