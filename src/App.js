@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
+import {
+  Route,
+  Routes,
+  BrowserRouter as Router
+} from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
 import Products from "./ProductList/Products";
 import Cart from "./Cart/Cart";
 import data from "./data";
 import useCart from "./Hooks/useCart"
 import ThemeContext from "./ThemeContext";
-
+import Checkout from "./Checkout/Checkout";
 import "./App.css";
 
 function App() {
@@ -35,17 +40,29 @@ function App() {
     setProducts(filterProduct);
   }, [keyword]);
 
-
-  return (
-    <ThemeContext.Provider value={{ dark: dark, toggole: toggoleDark }}>
-      <div className={`App ${dark ? 'app-dark' : 'app-light'}`}>
-        <NavBar setKeyword={setKeyword} />
+  const Home = () => {
+    return (
+      <>
         <Products products={products} addCartItem={addCartItem} />
         <Cart
           cartItems={cartItems}
           removeCartItem={removeCartItem}
           clearCart={clearCart}
         />
+      </>
+    );
+  }
+
+  return (
+    <ThemeContext.Provider value={{ dark: dark, toggole: toggoleDark }}>
+      <div className={`App ${dark ? 'app-dark' : 'app-light'}`}>
+        <Router>
+          <NavBar setKeyword={setKeyword} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+        </Router>
       </div>
     </ThemeContext.Provider>
   );

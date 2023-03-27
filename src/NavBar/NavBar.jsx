@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import ThemeContext from "../ThemeContext";
 
 export default function NavBar({ setKeyword }) {
@@ -18,6 +19,10 @@ export default function NavBar({ setKeyword }) {
       />
       <div className="shop-dark-light">{value.dark ? 'Dark' : 'Light'}</div>
       <button className="dark-light-button" onClick={value.toggole}>Change Theme</button>
+      <div className="navbar-link">
+        <Link to='/'>Home</Link>
+        <Link to='checkout'>Checkout</Link>
+      </div>
     </div>
   );
 }
