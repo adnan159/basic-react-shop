@@ -1,56 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Route,
   Routes,
   BrowserRouter as Router
 } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
-import Products from "./ProductList/Products";
-import Cart from "./Cart/Cart";
-import data from "./data";
-import useCart from "./Hooks/useCart"
 import ThemeContext from "./ThemeContext";
 import Checkout from "./Checkout/Checkout";
 import "./App.css";
+import ProductDetails from "./ProductList/ProductDetails";
+import Home from "./Home/Home";
 
 function App() {
-  const [products, setProducts] = useState([...data]);
   const [keyword, setKeyword] = useState("");
   const [dark, setDark] = useState(false);
-  const {
-    cartItems,
-    addCartItem,
-    removeCartItem,
-    clearCart
-  } = useCart([], products);
 
   const toggoleDark = () => {
     setDark(prevState => !prevState);
-  }
-
-  useEffect(() => {
-    const filterProduct = data.filter((product) => {
-      let tempTitle = product.title.toLowerCase();
-      if (tempTitle.includes(keyword.toLowerCase())) {
-        return product;
-      } else {
-        return "";
-      }
-    });
-    setProducts(filterProduct);
-  }, [keyword]);
-
-  const Home = () => {
-    return (
-      <>
-        <Products products={products} addCartItem={addCartItem} />
-        <Cart
-          cartItems={cartItems}
-          removeCartItem={removeCartItem}
-          clearCart={clearCart}
-        />
-      </>
-    );
   }
 
   return (
@@ -59,8 +25,9 @@ function App() {
         <Router>
           <NavBar setKeyword={setKeyword} />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />} component={()=><Home keyword={keyword} />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/product/:productId" element={<ProductDetails />} />
           </Routes>
         </Router>
       </div>
