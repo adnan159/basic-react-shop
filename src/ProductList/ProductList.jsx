@@ -20,11 +20,11 @@ export default function ProductList({
           <span>{title}</span>
           <span>Square</span>
         </div>
-        <div className="demo-product-action">
-          <span>${price}</span>
-          <button onClick={() => addCartItem(id)}>Add to Cart</button>
-        </div>
       </Link>
+      <div className="demo-product-action">
+        <span>${price}</span>
+        <button onClick={() => addCartItem(id)}>Add to Cart</button>
+      </div>
     </div>
   );
 }
